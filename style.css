@@ -1,5 +1,15 @@
 body {
-  width: 700px;
+  width: 600px;
   margin: auto;
   padding: 20px;
+}
+
+#output {
+  margin-top: 40px;
+}
+
+#output div {
+  border: 1px solid grey;
+  padding: 10px;
+  margin: 5px 0;
 }
