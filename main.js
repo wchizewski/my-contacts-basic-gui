@@ -26,6 +26,8 @@ function goBtnHandler() {
     displayByName();
   } else if (selection === "display-country") {
     displayByCountry();
+  } else if (selection === "display-email") {
+    findByEmail();
   }
 }
 
@@ -47,6 +49,7 @@ function addContact() {
   contacts.push(newContact(name, email, phoneNumber, country));
   saveContacts();
   displayContacts();
+  alert("New Contact Added!");
 }
 
 function removeContact() {
@@ -55,24 +58,39 @@ function removeContact() {
     contacts.splice(index, 1);
     saveContacts();
     displayContacts();
+    alert("Contact Removed");
+  } else if (index === "") {
+    alert("Please enter a number");
   } else {
     alert("Invalid Contact #");
   }
 }
 
 function displayByName() {
-  let index = prompt("Enter NAME of contact:");
+  let outputStr = "";
+  outputStr = prompt("Enter NAME of contact:");
   for (let i = 0; i < contacts.length; i++) {
-    if (contacts[i].name.includes(index)) {
-      outputEl = contacts[i];
+    if (contacts[i].name.includes(outputStr)) {
+      outputStr = getContactHTMLStr(contacts[i], i);
     }
   }
+  outputEl.innerHTML = outputStr;
 }
 
 function displayByCountry() {
-  console.log("Display by Country");
+  let outputStr = "";
+  outputStr = prompt("Enter COUNTRY of contact:");
+  for (let i = 0; i < contacts.length; i++) {
+    if (contacts[i].country.includes(outputStr)) {
+      outputStr = getContactHTMLStr(contacts[i], i);
+    }
+  }
+  outputEl.innerHTML = outputStr;
 }
 
+function findByEmail() {}
+
+// Helper functions
 function newContact(name, email, phoneNumber, country) {
   return {
     name: name,
