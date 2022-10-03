@@ -60,14 +60,14 @@ function removeContact() {
   }
 }
 
-// function displayByName() {
-//   let index = +prompt("Enter NAME of contact:");
-//   for (let i = 0; i < contacts.length; i++) {
-//     if (contacts[i].name.includes(index)) {
-//       outputEl +=
-//     }
-//   }
-// }
+function displayByName() {
+  let index = prompt("Enter NAME of contact:");
+  for (let i = 0; i < contacts.length; i++) {
+    if (contacts[i].name.includes(index)) {
+      outputEl = contacts[i];
+    }
+  }
+}
 
 function displayByCountry() {
   console.log("Display by Country");
