@@ -66,7 +66,7 @@ function removeContact() {
   }
   saveContacts();
   displayContacts();
-  outputEl.innerHTML = `Contact Removed (${name})`;
+  outputEl.innerHTML = `Contact Removed (${"help me"})`;
 }
 
 function displayByName() {
