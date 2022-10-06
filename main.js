@@ -44,16 +44,16 @@ function displayContacts() {
 function addContact() {
   let name = prompt("Please enter name:");
   let email = prompt("Please enter email:");
-  let index = findByEmail(email);
-  if (index != -1) {
-    email = prompt("Email already in use, please enter another");
-  }
   let phoneNumber = prompt("Please enter phoneNumber:");
   let country = prompt("Please enter country:");
-  contacts.push(newContact(name, email, phoneNumber, country));
+  if (findByEmail(email) === -1) {
+    outputEl.innerHTML = `New Contact Added (${name})`;
+    contacts.push(newContact(name, email, phoneNumber, country));
+  } else {
+    outputEl.innerHTML = "Email already in use";
+  }
+
   saveContacts();
-  displayContacts();
-  outputEl.innerHTML = `New Contact Added (${name})`;
 }
 
 function removeContact() {
@@ -62,11 +62,10 @@ function removeContact() {
   if (index === -1) {
     alert("Contact with that email could not be found");
   } else {
+    outputEl.innerHTML = `Contact Removed (${contacts[index].name})`;
     contacts.splice(index, 1);
   }
   saveContacts();
-  displayContacts();
-  outputEl.innerHTML = `Contact Removed (${"help me"})`;
 }
 
 function displayByName() {
